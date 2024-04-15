@@ -1,0 +1,10 @@
+{% for product in order.get_cart_items %}
+<h2>{{product}}
+    {{product.product.price}}</h2>
+{% endfor %}
+<a>ORDER TOTAL:</a>
+<strong>{{order.get_cart_total}}$</strong>
+<form method="POST" action="{% url 'shopping_cart:process_payment' order.id %}"><button>Pay with card</button>
+</form>
+<form method="POST" action="{% url 'shopping_cart:process_payment' order.id %}"><button>Pay with paypal</button>
+</form>

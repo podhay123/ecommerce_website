@@ -1,0 +1,22 @@
+<h1>Login</h1>
+
+<br>
+<form action="" method="POST">
+    {% csrf_token %}
+    <fieldset>
+        <legend>Zaloguj się</legend>
+        username
+        <input type="text" name="username">
+        <br>
+
+        password
+        <input type="password" name="password">
+
+        <input type="submit" value="Submit" class="btn btn-secondary">
+    </fieldset>
+    {% if messages %}
+    {% for message in messages %}
+    {{ message }}
+    {% endfor %}
+    {% endif %}
+</form>

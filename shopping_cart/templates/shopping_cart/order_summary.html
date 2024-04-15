@@ -1,0 +1,18 @@
+{{order.itmes}}
+{% for product in order.get_cart_items %}
+{{forloop.counter}}
+{{product.product.name}}
+<a href="{% url 'shopping_cart:delete_item' product.id %}">delete</a>}
+{{ product.product.price }}
+<br>
+{% empty %}
+<td>You have not added any itmes yet</td>
+{% endfor %}
+{% if order.get_cart_total != None %}
+<strong>Order total:</strong>
+<strong>{{order.get_cart_total}}</strong>
+{%endif%}
+{% if order %}Continue Shopping{% else %}Add Items to Cart {% endif %}
+{% if order.get_cart_items %}
+<a href="{% url 'shopping_cart:checkout' %}" class="pull-right btn btn-primary">Proceed To Checkout</a>
+{% endif %}
